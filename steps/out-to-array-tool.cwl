@@ -15,7 +15,7 @@ inputs:
       loadContents: true
 
 outputs:
-  anyarray:
+  output-array:
     type: string[]
 
 expression: "${var lines = inputs.datafile.contents.split('\\n');
@@ -26,5 +26,5 @@ expression: "${var lines = inputs.datafile.contents.split('\\n');
                         newlines.push(lines[i]);
                     }
                  }
-               return { 'anyarray': newlines } ;
+               return { 'output-array': newlines } ;
               }"
