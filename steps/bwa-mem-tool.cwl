@@ -55,6 +55,12 @@ inputs:
       position: 1
       prefix: "-t"
 
+  read_group_header:
+    type: string?
+    inputBinding:
+      position: 3
+      prefix: "-R"
+
 outputs:
   output:
     type: File
