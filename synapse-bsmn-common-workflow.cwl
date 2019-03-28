@@ -14,9 +14,6 @@ inputs:
     type: File
   specimenId:
     type: string
-  platform_unit:
-    type: string
-    doc: "Comes from the original pipeline. it should probably be an annotation"
 
 outputs:
   quants:
@@ -63,6 +60,13 @@ steps:
       synapse_config: synapse_config
     out: [filepath]
 
+  get-platform-unit:
+    doc: "Get the platform unit ({FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}) from the mate 1 fastq file."
+    run: steps/get-platform-unit.cwl
+    in:
+      fastq_files: download-mate1-files/filepath
+    out: [platform_unit]
+
   run-bwa-index:
     doc: "Create BWA index from the genome fasta file"
     run: steps/bwa-index-tool.cwl
@@ -77,7 +81,7 @@ steps:
     run: steps/make-read-group-header.cwl
     in:
       specimenId: specimenId
-      platform_unit: platform_unit
+      platform_unit: get-platform-unit/platform_unit
     out: [read_group_header]
 
   run-bwa-mem:
