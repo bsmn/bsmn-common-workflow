@@ -27,6 +27,10 @@ cwl-runner workflow-entrypoint.cwl test-workflow-entrypoint.json
 
 # Current workflow
 
-The main workflow starts in [workflow-entrypoint.cwl](workflow-entrypoint.cwl) which gets initial files and queries Synapse for which samples and data files to process. The samples and associated files are then 'scattered' to run in parallel through a sub-workflow called [synapse-bsmn-common-workflow.cwl](synapse-bsmn-common-workflow.cwl). You can see the current steps implemented in the image below.
+The main workflow starts in [workflow-entrypoint.cwl](workflow-entrypoint.cwl) which gets initial files and queries Synapse for which samples and data files to process. The samples and associated files are then 'scattered' to run in parallel through a sub-workflow called [synapse-bsmn-common-workflow.cwl](synapse-bsmn-common-workflow.cwl). You can see the current steps implemented in the image below. You can generate this image using `graphviz` as such:
+
+```
+cwl-runner --print-dot workflow-entrypoint.cwl test-workflow-entrypoint.json | dot -Tpng > bsmn-common-workflow.png
+```
 
 ![bsmn-common-workflow.png](bsmn-common-workflow.png)
