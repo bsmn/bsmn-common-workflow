@@ -14,6 +14,9 @@ inputs:
     type: File
   specimenId:
     type: string
+  platform_unit:
+    type: string
+    doc: "Comes from the original pipeline. it should probably be an annotation"
 
 outputs:
   quants:
@@ -59,6 +62,12 @@ steps:
         source: prefix
     out:
        [output]
+  make-read-group-header:
+    run: steps/make-read-group-header.cwl
+    in:
+      specimenId: specimenId
+      platform_unit: platform_unit
+    out: [read_group_header]
   run-bwa-mem:
     run: steps/bwa-mem-tool.cwl
     in:
@@ -67,6 +76,8 @@ steps:
       input2:
         source: download-mate2-files/filepath
       prefix: run-bwa-index/output
+      read_group_header:
+        source: make-read-group-header/read_group_header
       output_name:
         source: specimenId
         valueFrom: $(self + '.sam')
