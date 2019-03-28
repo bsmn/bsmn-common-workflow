@@ -17,13 +17,15 @@ inputs:
 
 outputs:
   quants:
-    type: File[]
-    outputSource: [download-mate1-files/filepath, download-mate2-files/filepath]
+    type: File
+    outputSource: run-bwa-mem/output
 
 requirements:
   - class: ScatterFeatureRequirement
   - class: SubworkflowFeatureRequirement
   - class: MultipleInputFeatureRequirement
+  - class: InlineJavascriptRequirement
+  - class: StepInputExpressionRequirement
 
 steps:
   get-mate1-files:
@@ -50,14 +52,23 @@ steps:
       synapseid: get-mate2-files/output-array
       synapse_config: synapse_config
     out: [filepath]
-  # run-bwa-mem:
-  #   run: steps/bwa-mem-tool.cwl
-  #   in:
-  #      input1:
-  #        source: download-mate1-files/filepath
-  #      input2:
-  #        source: download-mate2-files/filepath
-  #      prefix: prefix
-  #      output_name: specimenId
-  #   out:
-  #      [output]
+  run-bwa-index:
+    run: steps/bwa-index-tool.cwl
+    in:
+      sequences:
+        source: prefix
+    out:
+       [output]
+  run-bwa-mem:
+    run: steps/bwa-mem-tool.cwl
+    in:
+      input1:
+        source: download-mate1-files/filepath
+      input2:
+        source: download-mate2-files/filepath
+      prefix: run-bwa-index/output
+      output_name:
+        source: specimenId
+        valueFrom: $(self + '.sam')
+    out:
+       [output]

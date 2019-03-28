@@ -32,20 +32,17 @@ inputs:
     secondaryFiles:
       - ".amb"
       - ".ann"
-      - ".pac"
-      - ".rpac"
       - ".bwt"
-      - ".rbwt"
+      - ".pac"
       - ".sa"
-      - ".rsa"
 
   input1:
-    type: File
+    type: File[]
     inputBinding:
       position: 5
 
   input2:
-    type: File
+    type: File[]
     inputBinding:
       position: 6
 
