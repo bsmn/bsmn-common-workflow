@@ -16,9 +16,9 @@ inputs:
     type: string
 
 outputs:
-  quants:
+  sam_file:
     type: File
-    outputSource: run-bwa-mem/output
+    outputSource: run-bwa-mem/sam_file
 
 requirements:
   - class: ScatterFeatureRequirement
@@ -98,4 +98,4 @@ steps:
         source: specimenId
         valueFrom: $(self + '.sam')
     out:
-       [output]
+       [sam_file]
