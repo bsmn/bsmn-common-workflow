@@ -2,12 +2,12 @@ label: breakdownfile-tool
 id: breakdownfile-tool
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: python
+baseCommand: python3
 
 requirements:
  - class: InlineJavascriptRequirement
  - class: DockerRequirement
-   dockerPull: amancevice/pandas
+   dockerPull: amancevice/pandas:0.24.2-alpine
  - class: InitialWorkDirRequirement
    listing:
      - entryname: breakdownfiles.py
@@ -37,7 +37,7 @@ arguments:
   - valueFrom: breakdownfiles.py
   - valueFrom: $(inputs.fileName)
 outputs:
-  - id: specIds
+  - id: specimenIds
     type: string[]
     outputBinding:
       glob: cwl.json
