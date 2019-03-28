@@ -16,9 +16,9 @@ inputs:
     type: string
 
 outputs:
-  sam_file:
+  output_file:
     type: File
-    outputSource: run-bwa-mem/sam_file
+    outputSource: run-sambamba-sort/output_file
 
 requirements:
   - class: ScatterFeatureRequirement
@@ -99,3 +99,30 @@ steps:
         valueFrom: $(self + '.sam')
     out:
        [sam_file]
+
+  run-sambamba-view:
+    run: steps/sambamba-view.cwl
+    in:
+      sam_input: {default: true}
+      format: {default: 'bam'}
+      compression_level: {default: 0}
+      input_file:
+        source: run-bwa-mem/sam_file
+      output_name:
+        source: specimenId
+        valueFrom: $(self + '.bam')
+    out:
+       [output_file]
+
+  run-sambamba-sort:
+    run: steps/sambamba-sort.cwl
+    in:
+      memory_limit: {default: "24GB"}
+      threads: {default: 1}
+      input_file:
+        source: run-sambamba-view/output_file
+      output_name:
+        source: specimenId
+        valueFrom: $(self + '.sorted.bam')
+    out:
+       [output_file]

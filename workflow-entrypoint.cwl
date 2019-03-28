@@ -20,7 +20,7 @@ requirements:
 outputs:
   sam_file:
     type: File[]
-    outputSource: run-alignment-by-specimen-id/sam_file
+    outputSource: run-alignment-by-specimen-id/output_file
 
 steps:
     get-prefix:
@@ -53,4 +53,4 @@ steps:
         mate2-ids-file: get-samples-from-file-table/mate2files
         prefix: get-prefix/filepath
         synapse_config: synapse_config
-      out: [sam_file]
+      out: [output_file]
