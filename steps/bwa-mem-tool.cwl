@@ -62,7 +62,7 @@ inputs:
       prefix: "-R"
 
 outputs:
-  output:
+  sam_file:
     type: File
     outputBinding:
       glob: $(inputs.output_name)
