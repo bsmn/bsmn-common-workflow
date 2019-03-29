@@ -25,10 +25,10 @@ requirements:
          wr.write(platform_unit)
          wr.close()
 inputs:
- fastq_files: File[]
+ fastq_files: File
 arguments:
   - valueFrom: get-platform-unit.py
-  - valueFrom: $(inputs.fastq_files[0])
+  - valueFrom: $(inputs.fastq_files)
 
 outputs:
   - id: platform_unit

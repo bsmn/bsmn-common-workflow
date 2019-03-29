@@ -64,7 +64,9 @@ steps:
     doc: "Get the platform unit ({FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}) from the mate 1 fastq file."
     run: steps/get-platform-unit.cwl
     in:
-      fastq_files: download-mate1-files/filepath
+      fastq_files:
+        source: download-mate1-files/filepath
+        valueFrom: $(self[0])
     out: [platform_unit]
 
   run-bwa-index:
