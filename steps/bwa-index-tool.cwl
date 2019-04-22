@@ -22,7 +22,7 @@ dct:description: "Developed at Cincinnati Children’s Hospital Medical Center f
 
 requirements:
   - class: DockerRequirement
-    dockerPull: quay.io/kdaily/dockstore-tool-bwa-mem:2.0
+    dockerPull: dockstore-tool-bwa-mem:2.0
   - class: InitialWorkDirRequirement
     listing: [ $(inputs.sequences) ]
 
