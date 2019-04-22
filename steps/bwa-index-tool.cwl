@@ -57,9 +57,7 @@ outputs:
     outputBinding:
       glob: $(inputs.sequences.basename)
 
-baseCommand:
-- bwa
-- index
+baseCommand: ["bwa", "index"]
 
 doc: |
   Usage:   bwa index [options] <in.fasta>
