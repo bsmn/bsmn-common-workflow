@@ -1,5 +1,5 @@
 {"prefix_id": "syn18482063",
  "synapse_config": {"class": "File", "path": "/path/to/.synapseConfig"},
- "parent_id": "syn18482064",
+ "parentid": "syn18482064",
  "id_query": "select id,specimenID,readPair from syn18478451 WHERE fileFormat='fastq'"
 }
