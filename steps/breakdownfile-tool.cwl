@@ -1,3 +1,5 @@
+#!/usr/bin/env cwl-runner
+
 label: breakdownfile-tool
 id: breakdownfile-tool
 cwlVersion: v1.0

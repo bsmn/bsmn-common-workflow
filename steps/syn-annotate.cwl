@@ -1,3 +1,5 @@
+#!/usr/bin/env cwl-runner
+
 class: Workflow
 label: syn-annotate
 id: syn-annotate

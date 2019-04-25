@@ -1,3 +1,5 @@
+#!/usr/bin/env cwl-runner
+
 label: make-read-group-header
 id: make-read-group-header
 cwlVersion: v1.0
@@ -23,8 +25,8 @@ requirements:
          wr.write(read_group_header)
          wr.close()
 inputs:
- specimenId: string
- platform_unit: string
+  specimenId: string
+  platform_unit: string
 arguments:
   - valueFrom: make-read-group-header.py
   - valueFrom: $(inputs.specimenId)

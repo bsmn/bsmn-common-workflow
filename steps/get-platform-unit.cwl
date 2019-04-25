@@ -1,3 +1,5 @@
+#!/usr/bin/env cwl-runner
+
 label: get-platform-unit
 id: get-platform-unit
 cwlVersion: v1.0

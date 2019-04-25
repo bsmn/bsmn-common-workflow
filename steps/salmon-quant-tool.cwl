@@ -1,4 +1,5 @@
 #!/usr/bin/env cwl-runner
+
 class: CommandLineTool
 id: salmon-quant-tool
 label: salmon-quant-tool
