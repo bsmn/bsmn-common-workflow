@@ -39,8 +39,10 @@ inputs:
       position: 5
 
 outputs:
-  output_file:
-    type: File
+  output_files:
+    type:
+      type: array
+      items: File
     outputBinding:
       glob: $(inputs.output_name)
 
