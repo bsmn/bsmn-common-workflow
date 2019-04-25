@@ -4,12 +4,12 @@ class: CommandLineTool
 cwlVersion: v1.0
 
 dct:contributor:
-  "@id": "http://orcid.org/orcid.org/0000-0001-5729-7376"
+  "@id": "http://orcid.org/0000-0001-5729-7376"
   foaf:name: Kenneth Daily
   foaf:mbox: "mailto:kenneth.daily@sagebionetworks.org"
 
 dct:contributor:
-  "@id": "http://orcid.org/orcid.org/0000-0002-6130-1021"
+  "@id": "http://orcid.org/0000-0002-6130-1021"
   foaf:name: Denis Yuen
   foaf:mbox: "mailto:help@cancercollaboratory.org"
 

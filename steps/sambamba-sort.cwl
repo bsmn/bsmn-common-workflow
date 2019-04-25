@@ -4,7 +4,7 @@ class: CommandLineTool
 cwlVersion: v1.0
 
 dct:creator:
-  "@id": "http://orcid.org/orcid.org/0000-0001-5729-7376"
+  "@id": "http://orcid.org/0000-0001-5729-7376"
   foaf:name: Kenneth Daily
   foaf:mbox: "mailto:kenneth.daily@sagebionetworks.org"
 
