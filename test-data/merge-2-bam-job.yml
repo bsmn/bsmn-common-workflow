@@ -1,0 +1,6 @@
+input_files:
+  - class: File
+    path: test.sorted.bam
+  - class: File
+    path: test2.sorted.bam
+output_name: test.merged.bam

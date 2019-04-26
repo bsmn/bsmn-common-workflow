@@ -1,0 +1,26 @@
+- job: test-data/merge-0-bam-job.yml
+  output: {}
+  should_fail: true
+  tool: steps/sambamba-merge.cwl
+  doc: Test that sambamba-merge fails when no BAM files are supplied.
+  short_name: merge-zero
+- job: test-data/merge-1-bam-job.yml
+  output:
+    output_file:
+      class: File
+      location: test.merged.bam
+      size: 30109
+      checksum: sha1$97cae7b1e53afd7b6e7f30ddf225680290409a44
+  tool: steps/sambamba-merge.cwl
+  doc: Test that sambamba-merge handles a single BAM file.
+  short_name: merge-one
+- job: test-data/merge-2-bam-job.yml
+  output:
+    output_file:
+      class: File
+      location: test.merged.bam
+      size: 30111
+      checksum: sha1$a47b9f3581de0cf89cc76f82be4da8e88a452355
+  tool: steps/sambamba-merge.cwl
+  doc: Test that sambamba-merge will merge two BAM files.
+  short_name: merge-two
