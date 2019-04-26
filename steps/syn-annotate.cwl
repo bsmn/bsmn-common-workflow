@@ -6,6 +6,7 @@ cwlVersion: v1.0
 requirements:
   - class: SubworkflowFeatureRequirement
   - class: StepInputExpressionRequirement
+  - class: InlineJavascriptRequirement
 
 inputs:
   synapse_config:
