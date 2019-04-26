@@ -18,13 +18,21 @@ requirements:
         entry: |-
           #!/usr/bin/env bash
 
+          NUM_FILES=$(inputs.input_files.length)
+          INPUT_PATHS="$(inputs.input_files.map(function(file) { return file.path }).join(' '))"
           OUTPUT_NAME=$(inputs.output_name)
-          if [[ $(inputs.input_files.length) == 1 ]]; then
-            cp $(inputs.input_files[0].path) $OUTPUT_NAME
-          else
-            INPUT_PATHS="$(inputs.input_files.map(function(file) { return file.path }).join(' '))"
-            sambamba merge $OUTPUT_NAME $INPUT_PATHS
-          fi
+          case $NUM_FILES in
+            0)
+              echo "Error: this script requires at least one input file."
+              exit 1
+              ;;
+            1)
+              cp $INPUT_PATHS $OUTPUT_NAME
+              ;;
+            *)
+              sambamba merge $OUTPUT_NAME $INPUT_PATHS
+              ;;
+          esac
   - class: DockerRequirement
     dockerPull: quay.io/biocontainers/sambamba:0.6.8--h682856c_1 # TODO find way to define this once for use between workflows
 
