@@ -11,42 +11,40 @@ dct:creator:
 dct:description: "Run sambamba merge tool."
 
 requirements:
+  - class: InlineJavascriptRequirement
   - class: InitialWorkDirRequirement
     listing:
       - entryname: merge.sh
         entry: |-
-          echo ">>>>> BEGIN BAM MERGE <<<<<"
+          #!/usr/bin/env bash
+
           OUTPUT_NAME=$(inputs.output_name)
           if [[ $(inputs.input_files.length) == 1 ]]; then
-              cp $(inputs.input_files[0].path) $OUTPUT_NAME
+            cp $(inputs.input_files[0].path) $OUTPUT_NAME
           else
-              INPUT_PATHS = $(inputs.input_files.map(a => a.path).join(" "))
-              sambamba merge $OUTPUT_NAME $INPUT_PATHS
-          fi          
+            INPUT_PATHS="$(inputs.input_files.map(function(file) { return file.path }).join(' '))"
+            sambamba merge $OUTPUT_NAME $INPUT_PATHS
+          fi
   - class: DockerRequirement
-    dockerPull: quay.io/biocontainers/sambamba:0.6.8--h682856c_1 # TODO define this once for use between workflows
+    dockerPull: quay.io/biocontainers/sambamba:0.6.8--h682856c_1 # TODO find way to define this once for use between workflows
 
 baseCommand: ["sh", "merge.sh"]
 
 inputs:
-#  threads:
-#    type: int?
-#    inputBinding:
-#      position: 1
-#      prefix: "-t"
+  threads:
+    type: int?
+    inputBinding:
+      position: 1
+      prefix: "-t"
   output_name:
     type: string
     inputBinding:
-      position: 3
-#  input_files:
-#    type: File
-#    inputBinding:
-#      position: 2
+      position: 2
   input_files:
     type: File[]
     inputBinding:
       prefix: --inputs
-      position: 5
+      position: 3
 outputs:
   output_file:
     type: File
