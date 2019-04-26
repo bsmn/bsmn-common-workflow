@@ -17,10 +17,13 @@ requirements:
       - entryname: merge.sh
         entry: |-
           #!/usr/bin/env bash
-
           NUM_FILES=$(inputs.input_files.length)
           INPUT_PATHS="$(inputs.input_files.map(function(file) { return file.path }).join(' '))"
           OUTPUT_NAME=$(inputs.output_name)
+          THREADS="$(inputs.threads ? '-t ' + inputs.threads : '')"
+
+          set -x
+          
           case $NUM_FILES in
             0)
               echo "Error: this script requires at least one input file."
@@ -30,11 +33,11 @@ requirements:
               cp $INPUT_PATHS $OUTPUT_NAME
               ;;
             *)
-              sambamba merge $OUTPUT_NAME $INPUT_PATHS
+              sambamba merge $THREADS $OUTPUT_NAME $INPUT_PATHS
               ;;
           esac
   - class: DockerRequirement
-    dockerPull: quay.io/biocontainers/sambamba:0.6.8--h682856c_1 # TODO find way to define this once for use between workflows
+    dockerPull: quay.io/biocontainers/sambamba:0.6.8--h682856c_1
 
 baseCommand: ["sh", "merge.sh"]
 
@@ -43,16 +46,18 @@ inputs:
     type: int?
     inputBinding:
       position: 1
-      prefix: "-t"
+      prefix: "--nthreads"
   output_name:
     type: string
     inputBinding:
       position: 2
+      prefix: "--out"
   input_files:
     type: File[]
     inputBinding:
-      prefix: --inputs
+      prefix: "--inputs"
       position: 3
+
 outputs:
   output_file:
     type: File
