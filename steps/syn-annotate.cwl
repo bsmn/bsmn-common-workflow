@@ -15,7 +15,7 @@ inputs:
   annotations_json_string:
     type: string
   store_stdout:
-    File
+    type: File
 
 outputs:
   output:
