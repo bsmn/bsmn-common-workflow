@@ -24,7 +24,7 @@ dct:description: "Developed at Cincinnati Children’s Hospital Medical Center f
 
 requirements:
   - class: DockerRequirement
-    dockerPull: kdaily/dockstore-tool-bwa-mem:2.0
+    dockerPull: dailyk/dockstore-tool-bwa-mem:2.0
 
 inputs:
   prefix:
