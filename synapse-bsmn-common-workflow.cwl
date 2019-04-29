@@ -18,7 +18,7 @@ inputs:
 outputs:
   output_file:
     type: File
-    outputSource: run-sambamba-sort/output_file
+    outputSource: run-sambamba-merge/output_file
 
 requirements:
   - class: ScatterFeatureRequirement
@@ -75,8 +75,7 @@ steps:
     in:
       sequences:
         source: prefix
-    out:
-       [output]
+    out: [output]
 
   make-read-group-header:
     doc: "Use the specimen ID and platform unit to construct read group header for bwa mem."
@@ -99,10 +98,9 @@ steps:
       output_name:
         source: specimenId
         valueFrom: $(self + '.sam')
-    out:
-       [sam_file]
+    out: [sam_file]
 
-  run-sambamba-view:
+  run-sambamba-view: # creates the bam file
     run: steps/sambamba-view.cwl
     in:
       sam_input: {default: true}
@@ -113,8 +111,7 @@ steps:
       output_name:
         source: specimenId
         valueFrom: $(self + '.bam')
-    out:
-       [output_file]
+    out: [output_file]
 
   run-sambamba-sort:
     run: steps/sambamba-sort.cwl
@@ -126,5 +123,12 @@ steps:
       output_name:
         source: specimenId
         valueFrom: $(self + '.sorted.bam')
-    out:
-       [output_file]
+    out: [output_files]
+
+  run-sambamba-merge:
+    run: steps/sambamba-merge.cwl
+    in:
+      input_files:
+        source: run-sambamba-sort/output_files
+      output_name: { default: 'test.merged.bam' }
+    out: [output_file]

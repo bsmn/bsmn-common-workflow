@@ -34,3 +34,11 @@ cwl-runner --print-dot workflow-entrypoint.cwl test-workflow-entrypoint.json | d
 ```
 
 ![bsmn-common-workflow.png](bsmn-common-workflow.png)
+
+# Tests
+
+Tests can be run with the [cwltest tool](https://github.com/common-workflow-language/cwltest/), using this command:
+
+```
+cwltest --test test-descriptions.yml --tool cwl-runner
+```
