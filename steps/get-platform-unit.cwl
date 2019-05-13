@@ -17,8 +17,9 @@ requirements:
          #!/usr/bin/env python
          import json
          import sys
+         import gzip
          filename = sys.argv[1]
-         fastq_file = open(filename)
+         fastq_file = gzip.open(filename)
          header = fastq_file.readline().lstrip("@")
          first, second = header.split(" ")
          res = first.split(":")
