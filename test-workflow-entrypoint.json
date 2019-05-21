@@ -2,6 +2,5 @@
   "prefix_id": "syn18482063",
   "synapse_config": {"class": "File", "path": ".synapseConfig"},
   "parentid": "",
-  "id_query": "SELECT * FROM syn8077013 WHERE ( ( \"assay\" = 'rnaSeq' ) AND ( \"fileFormat\" = 'fastq' ) AND ( \"tumorType\" = 'Plexiform Neurofibroma' ) AND ( \"study\" = 'pNF Cell Line Characterization' ) AND ( \"resourceType\" = 'experimentalData' ) )"
+  "id_query": "SELECT * FROM syn8077013 WHERE ( ( \"assay\" = 'rnaSeq' ) AND ( \"fileFormat\" = 'fastq' ) AND ( \"tumorType\" = 'Plexiform Neurofibroma' ) AND ( \"study\" = 'pNF Cell Line Characterization' ) AND ( \"resourceType\" IS NULL ) AND ( \"specimenID\" = 'pNF05.5') )"
 }
-

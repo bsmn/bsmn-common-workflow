@@ -6,21 +6,20 @@ JOBSTORE=aws:us-east-1:tthyer-cwl-cluster-bsmn
 
 toil clean $JOBSTORE
 
+mkdir -p /var/log/toil/workers/bsmn
+
 toil-cwl-runner --provisioner aws \
 --jobStore $JOBSTORE \
 --provisioner aws \
 --batchSystem mesos \
---logLevel INFO \
+--logLevel DEBUG \
 --logFile /var/log/toil/bsmn.log \
 --retryCount 0 \
 --metrics \
---nodeTypes m5.xlarge \
+--nodeTypes m5.2xlarge \
 --nodeStorage 100 \
---runCwlInternalJobsOnWorkers \
 --targetTime 300 \
---minNodes 3 \
---maxNodes 6 \
+--maxNodes 2 \
 --rescueJobsFrequency 300 \
---defaultDisk 100 \
---defaultMemory 6 \
+--writeLogs /var/log/toil/workers/bsmn \
 workflow-entrypoint.cwl test-workflow-entrypoint.json
