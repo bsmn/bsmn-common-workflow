@@ -1,3 +1,5 @@
+#!/usr/bin/env cwl-runner
+
 class: Workflow
 label: bsmn-common-workflow
 id: bsmn-common-workflow
