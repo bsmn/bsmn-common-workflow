@@ -4,7 +4,6 @@ class: CommandLineTool
 cwlVersion: v1.0
 doc: "Developed at Cincinnati Children’s Hospital Medical Center for the CWL consortium http://commonwl.org/ Original URL: https://github.com/common-workflow-language/workflows"
 
-
 requirements:
   - class: DockerRequirement
     dockerPull: dailyk/dockstore-tool-bwa-mem:2.0
