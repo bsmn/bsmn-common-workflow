@@ -2,23 +2,7 @@
 
 class: CommandLineTool
 cwlVersion: v1.0
-
-dct:contributor:
-  "@id": "http://orcid.org/0000-0001-5729-7376"
-  foaf:name: Kenneth Daily
-  foaf:mbox: "mailto:kenneth.daily@sagebionetworks.org"
-
-dct:contributor:
-  "@id": "http://orcid.org/0000-0002-6130-1021"
-  foaf:name: Denis Yuen
-  foaf:mbox: "mailto:help@cancercollaboratory.org"
-
-dct:creator:
-  "@id": "http://orcid.org/0000-0001-9102-5681"
-  foaf:name: "Andrey Kartashov"
-  foaf:mbox: "mailto:Andrey.Kartashov@cchmc.org"
-
-dct:description: "Developed at Cincinnati Children’s Hospital Medical Center for the CWL consortium http://commonwl.org/ Original URL: https://github.com/common-workflow-language/workflows"
+doc: "Developed at Cincinnati Children’s Hospital Medical Center for the CWL consortium http://commonwl.org/ Original URL: https://github.com/common-workflow-language/workflows"
 
 requirements:
   - class: DockerRequirement
@@ -69,3 +53,29 @@ doc: |
 
   Warning: `-a bwtsw' does not work for short genomes, while `-a is' and
            `-a div' do not work not for long genomes.
+
+s:author:
+  - class: s:Person
+    s:identifier: http://orcid.org/0000-0001-9102-5681
+    s:email: mailto:Andrey.Kartashov@cchmc.org
+    s:name: Andrey Kartashov
+
+s:contributor:
+  - class: s:Person
+    s:identifier: http://orcid.org/orcid.org/0000-0001-5729-7376
+    s:email: mailto:kenneth.daily@sagebionetworks.org
+    s:name: Kenneth Daily
+
+s:contributor:
+  - class: s:Person
+    s:identifier: http://orcid.org/orcid.org/0000-0002-6130-1021
+    s:email: mailto:help@cancercollaboratory.org
+    s:name: Denis Yuen
+
+$namespaces:
+  s: https://schema.org/
+  edam: http://edamontology.org/
+
+$schemas:
+ - https://schema.org/docs/schema_org_rdfa.html
+ - http://edamontology.org/EDAM_1.18.owl
