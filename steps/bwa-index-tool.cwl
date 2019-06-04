@@ -72,8 +72,6 @@ s:contributor:
 
 $namespaces:
   s: https://schema.org/
-  edam: http://edamontology.org/
 
 $schemas:
  - https://schema.org/docs/schema_org_rdfa.html
- - http://edamontology.org/EDAM_1.18.owl
