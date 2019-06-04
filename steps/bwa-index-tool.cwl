@@ -2,7 +2,6 @@
 
 class: CommandLineTool
 cwlVersion: v1.0
-doc: "Developed at Cincinnati Children’s Hospital Medical Center for the CWL consortium http://commonwl.org/ Original URL: https://github.com/common-workflow-language/workflows"
 
 requirements:
   - class: DockerRequirement
@@ -44,6 +43,7 @@ outputs:
 baseCommand: ["bwa", "index"]
 
 doc: |
+  Developed at Cincinnati Children’s Hospital Medical Center for the CWL consortium http://commonwl.org/ Original URL: https://github.com/common-workflow-language/workflows
   Usage:   bwa index [options] <in.fasta>
 
   Options: -a STR    BWT construction algorithm: bwtsw or is [auto]
@@ -65,8 +65,6 @@ s:contributor:
     s:identifier: http://orcid.org/orcid.org/0000-0001-5729-7376
     s:email: mailto:kenneth.daily@sagebionetworks.org
     s:name: Kenneth Daily
-
-s:contributor:
   - class: s:Person
     s:identifier: http://orcid.org/orcid.org/0000-0002-6130-1021
     s:email: mailto:help@cancercollaboratory.org
